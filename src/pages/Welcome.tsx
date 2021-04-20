@@ -18,7 +18,7 @@ export default function Welcome() {
         Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
         sempre que precisar.
       </Text>
-      <Button title="Próximo" />
+      <Button title=">" />
     </SafeAreaView>
   );
 }
