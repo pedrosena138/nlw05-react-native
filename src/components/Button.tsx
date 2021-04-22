@@ -6,31 +6,52 @@ import {
   TouchableOpacityProps,
 } from "react-native";
 import colors from "../styles/colors";
+import fonts from "../styles/fonts";
+import { Feather } from "@expo/vector-icons";
 
 interface ButtonProps extends TouchableOpacityProps {
-  title: string;
+  title?: string;
 }
-export default function Button({ title, ...rest }: ButtonProps) {
+export function WelcomeButton(props: ButtonProps) {
+  return (
+    <TouchableOpacity
+      style={[styles.button, styles.welcome]}
+      activeOpacity={0.7}
+      {...props}
+    >
+      <Feather name="chevron-right" style={styles.icon} />
+    </TouchableOpacity>
+  );
+}
+
+export function Button({ title, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} activeOpacity={0.7} {...rest}>
-      <Text style={styles.buttonText}> {title} </Text>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  welcome: {
+    marginBottom: 10,
+    width: 56,
+    paddingHorizontal: 10,
+  },
   button: {
     backgroundColor: colors.green,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
-    marginBottom: 10,
     height: 56,
-    width: 56,
-    paddingHorizontal: 10,
   },
-  buttonText: {
+  text: {
     color: colors.white,
-    fontSize: 24,
+    fontSize: 16,
+    fontFamily: fonts.heading,
+  },
+  icon: {
+    color: colors.white,
+    fontSize: 32,
   },
 });
